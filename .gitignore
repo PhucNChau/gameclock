@@ -17,6 +17,7 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
+build/
 
 ## Package
 Carthage/
@@ -24,4 +25,9 @@ Carthage/
 ### SwiftPackageManager ###
 .swiftpm
 Package.resolved
+Packages/
+*.xcodeproj
+
+.build/
+
 
