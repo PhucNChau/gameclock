@@ -46,7 +46,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAw-6y-jel">
                                 <rect key="frame" x="25" y="60" width="340" height="325"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="backgroundColor" red="0.2043831646" green="0.77893042560000003" blue="0.34851032500000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="1:00">
@@ -100,12 +100,6 @@
                                     <action selector="SettingButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N11-WN-Ti4"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="asdf" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SzZ-Jz-EFc">
-                                <rect key="frame" x="84" y="80" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -113,7 +107,9 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="test" destination="SzZ-Jz-EFc" id="E9P-Wp-MPs"/>
+                        <outlet property="pauseButton" destination="nZG-Vz-L5K" id="Rg2-bD-w1w"/>
+                        <outlet property="playButton" destination="lqI-rm-FGK" id="QP9-Ms-T3b"/>
+                        <outlet property="resetButton" destination="XbV-PJ-aLP" id="cgI-2w-YH1"/>
                         <outlet property="timerLabelA" destination="nAw-6y-jel" id="ml7-sf-YxA"/>
                         <outlet property="timerLabelB" destination="HUt-k4-2qU" id="bMe-Lr-hoD"/>
                     </connections>
