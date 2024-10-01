@@ -19,24 +19,33 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resetButton: UIButton!
     
-    var newGame: Bool = true
+    var isNewGame: Bool = true
     var isATurn: Bool = true
     var timer: Timer = Timer()
-    var remainingTimeA = 100
-    var remainingTimeB = 100
+    var timeSetting = 30
+    var remainingTimeA: Int = 30
+    var remainingTimeB: Int = 30
     
     @IBAction func TimerAPressed(_ sender: UIButton) {
-        timer.invalidate()
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.updateTimerB)), userInfo: nil, repeats: true)
-        isATurn = false
-        startTimer(isATurn: isATurn)
+        if isNewGame {
+            startTimer(isATurn: true)
+            isNewGame = false
+        } else {
+            timer.invalidate()
+            isATurn = false
+            startTimer(isATurn: isATurn)
+        }
     }
     
     @IBAction func TimerBPressed(_ sender: UIButton) {
-        timer.invalidate()
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(self.updateTimerA)), userInfo: nil, repeats: true)
-        isATurn = true
-        startTimer(isATurn: isATurn)
+        if isNewGame {
+            startTimer(isATurn: false)
+            isNewGame = false
+        } else {
+            timer.invalidate()
+            isATurn = true
+            startTimer(isATurn: isATurn)
+        }
     }
     
     func startTimer(isATurn: Bool) {
@@ -77,37 +86,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ResetButtonPressed(_ sender: Any) {
+        timer.invalidate()
+        timerLabelA.isEnabled = true
+        timerLabelA.layer.opacity = 1
+        timerLabelB.isEnabled = true
+        timerLabelB.layer.opacity = 1
+        resetTimer()
     }
     
-    @IBAction func SettingButtonPressed(_ sender: Any) {
-    }
-    
-    @objc func updateTimerA() {
-        remainingTimeA -= 1
-        UIView.performWithoutAnimation {
-            timerLabelA.setTitle(formatTimer(remainingTimeA), for: .normal)
-            timerLabelA.layoutIfNeeded()
-        }
-    }
-    
-    @objc func updateTimerB() {
-        remainingTimeB -= 1
-        UIView.performWithoutAnimation {
-            timerLabelB.setTitle(formatTimer(remainingTimeB), for: .normal)
-            timerLabelB.layoutIfNeeded()
-        }
-    }
-    
-    func formatTimer(_ seconds: Int) -> String {
-        return "\(seconds / 60):\(seconds % 60)"
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        timerLabelA.layer.cornerRadius = 30
-        timerLabelB.layer.cornerRadius = 30
+    func resetTimer() {
+        isNewGame = true
+        remainingTimeA = timeSetting
+        remainingTimeB = timeSetting
         timerLabelA.setTitle(formatTimer(remainingTimeA), for: .normal)
         timerLabelB.setTitle(formatTimer(remainingTimeB), for: .normal)
         timerLabelA.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
@@ -118,6 +108,58 @@ class ViewController: UIViewController {
         pauseButton.layer.opacity = 0.4
         resetButton.isEnabled = false
         resetButton.layer.opacity = 0.4
+    }
+    
+    @IBAction func SettingButtonPressed(_ sender: Any) {
+    }
+    
+    @objc func updateTimerA() {
+        if remainingTimeA > 1 {
+            remainingTimeA -= 1
+        } else {
+            remainingTimeA = 0
+            timerLabelA.backgroundColor = UIColor.systemRed
+            timerLabelA.isEnabled = false
+            timerLabelB.isEnabled = false
+            pauseButton.isEnabled = false
+            pauseButton.layer.opacity = 0.4
+        }
+        
+        UIView.performWithoutAnimation {
+            timerLabelA.setTitle(formatTimer(remainingTimeA), for: .normal)
+            timerLabelA.layoutIfNeeded()
+        }
+    }
+    
+    @objc func updateTimerB() {
+        if remainingTimeB > 1 {
+            remainingTimeB -= 1
+        } else {
+            remainingTimeB = 0
+            timerLabelB.backgroundColor = UIColor.systemRed
+            timerLabelA.isEnabled = false
+            timerLabelB.isEnabled = false
+            pauseButton.isEnabled = false
+            pauseButton.layer.opacity = 0.4
+        }
+        
+        UIView.performWithoutAnimation {
+            timerLabelB.setTitle(formatTimer(remainingTimeB), for: .normal)
+            timerLabelB.layoutIfNeeded()
+        }
+    }
+    
+    func formatTimer(_ seconds: Int) -> String {
+        return "\(seconds / 60):\(String(format: "%02d", (seconds % 60)))"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        timerLabelA.layer.cornerRadius = 30
+        timerLabelB.layer.cornerRadius = 30
+        
+        resetTimer()
     }
 
 }
