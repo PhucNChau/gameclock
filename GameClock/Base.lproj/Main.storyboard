@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqI-rm-FGK">
-                                <rect key="frame" x="25" y="398" width="65" height="64"/>
+                                <rect key="frame" x="51" y="398" width="65" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -62,7 +62,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZG-Vz-L5K">
-                                <rect key="frame" x="116" y="398" width="65" height="64"/>
+                                <rect key="frame" x="162" y="398" width="65" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbV-PJ-aLP">
-                                <rect key="frame" x="208" y="398" width="65" height="64"/>
+                                <rect key="frame" x="273" y="398" width="65" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -85,19 +85,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="ResetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VVK-91-cKb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDL-zR-qjt">
-                                <rect key="frame" x="300" y="398" width="65" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="medium"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40" weight="bold"/>
-                                    <color key="baseForegroundColor" systemColor="systemGrayColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="SettingButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N11-WN-Ti4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -121,7 +108,6 @@
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="pause.fill" catalog="system" width="116" height="128"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <systemColor name="systemBackgroundColor">
