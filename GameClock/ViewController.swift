@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  GameClock
-//
-//  Created by Phuc Chau on 29/09/2024.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -94,6 +87,7 @@ class ViewController: UIViewController {
         resetTimer()
     }
     
+    // Function to reset all component to default value
     func resetTimer() {
         isNewGame = true
         remainingTimeA = timeSetting
@@ -110,9 +104,6 @@ class ViewController: UIViewController {
         resetButton.layer.opacity = 0.4
     }
     
-    @IBAction func SettingButtonPressed(_ sender: Any) {
-    }
-    
     @objc func updateTimerA() {
         if remainingTimeA > 1 {
             remainingTimeA -= 1
@@ -125,6 +116,7 @@ class ViewController: UIViewController {
             pauseButton.layer.opacity = 0.4
         }
         
+        // Prevents animation of button when text is changed
         UIView.performWithoutAnimation {
             timerLabelA.setTitle(formatTimer(remainingTimeA), for: .normal)
             timerLabelA.layoutIfNeeded()
@@ -143,12 +135,14 @@ class ViewController: UIViewController {
             pauseButton.layer.opacity = 0.4
         }
         
+        // Prevents animation of button when text is changed
         UIView.performWithoutAnimation {
             timerLabelB.setTitle(formatTimer(remainingTimeB), for: .normal)
             timerLabelB.layoutIfNeeded()
         }
     }
     
+    // Function to transform number of seconds to string as m:ss
     func formatTimer(_ seconds: Int) -> String {
         return "\(seconds / 60):\(String(format: "%02d", (seconds % 60)))"
     }
@@ -161,6 +155,5 @@ class ViewController: UIViewController {
         
         resetTimer()
     }
-
 }
 
