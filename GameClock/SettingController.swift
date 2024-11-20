@@ -18,4 +18,10 @@ class SettingController: UIViewController {
     @IBAction func unwindToSettingView(unwindSegue: UIStoryboardSegue) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ViewController {
+            destination.timeSetting = Int(timePicker.countDownDuration)
+        }
+    }
 }

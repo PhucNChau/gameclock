@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resetButton: UIButton!
     
+    
+    
     var isNewGame: Bool = true
     var isATurn: Bool = true
     var timer: Timer = Timer()

@@ -95,7 +95,7 @@
                                             <color key="baseForegroundColor" systemColor="systemGrayColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="ResetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OCb-ea-Hz5"/>
+                                            <action selector="ResetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L58-Kr-o7c"/>
                                             <segue destination="Xuh-K8-vMv" kind="unwind" unwindAction="unwindToSettingViewWithUnwindSegue:" id="FY2-6o-cin"/>
                                         </connections>
                                     </button>
