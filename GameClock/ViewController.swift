@@ -12,14 +12,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resetButton: UIButton!
     
-    
-    
     var isNewGame: Bool = true
     var isATurn: Bool = true
     var timer: Timer = Timer()
     var timeSetting = 30
-    var remainingTimeA: Int = 30
-    var remainingTimeB: Int = 30
+    var timerClockA: TimerClock = TimerClock(timer: 30)
+    var timerClockB: TimerClock = TimerClock(timer: 30)
     
     @IBAction func TimerAPressed(_ sender: UIButton) {
         if isNewGame {
@@ -92,10 +90,10 @@ class ViewController: UIViewController {
     // Function to reset all component to default value
     func resetTimer() {
         isNewGame = true
-        remainingTimeA = timeSetting
-        remainingTimeB = timeSetting
-        timerLabelA.setTitle(formatTimer(remainingTimeA), for: .normal)
-        timerLabelB.setTitle(formatTimer(remainingTimeB), for: .normal)
+        timerClockA = TimerClock(timer: timeSetting)
+        timerClockB = TimerClock(timer: timeSetting)
+        timerLabelA.setTitle(timerClockA.formatTimer(), for: .normal)
+        timerLabelB.setTitle(timerClockB.formatTimer(), for: .normal)
         timerLabelA.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         timerLabelB.backgroundColor = UIColor(red: 69/255, green: 69/255, blue: 69/255, alpha: 1)
         playButton.isEnabled = false
@@ -107,10 +105,10 @@ class ViewController: UIViewController {
     }
     
     @objc func updateTimerA() {
-        if remainingTimeA > 1 {
-            remainingTimeA -= 1
+        if timerClockA.timer > 1 {
+            timerClockA.timer -= 1
         } else {
-            remainingTimeA = 0
+            timerClockA.timer = 0
             timerLabelA.backgroundColor = UIColor.systemRed
             timerLabelA.isEnabled = false
             timerLabelB.isEnabled = false
@@ -120,16 +118,16 @@ class ViewController: UIViewController {
         
         // Prevents animation of button when text is changed
         UIView.performWithoutAnimation {
-            timerLabelA.setTitle(formatTimer(remainingTimeA), for: .normal)
+            timerLabelA.setTitle(timerClockA.formatTimer(), for: .normal)
             timerLabelA.layoutIfNeeded()
         }
     }
     
     @objc func updateTimerB() {
-        if remainingTimeB > 1 {
-            remainingTimeB -= 1
+        if timerClockB.timer > 1 {
+            timerClockB.timer -= 1
         } else {
-            remainingTimeB = 0
+            timerClockB.timer = 0
             timerLabelB.backgroundColor = UIColor.systemRed
             timerLabelA.isEnabled = false
             timerLabelB.isEnabled = false
@@ -139,14 +137,9 @@ class ViewController: UIViewController {
         
         // Prevents animation of button when text is changed
         UIView.performWithoutAnimation {
-            timerLabelB.setTitle(formatTimer(remainingTimeB), for: .normal)
+            timerLabelB.setTitle(timerClockB.formatTimer(), for: .normal)
             timerLabelB.layoutIfNeeded()
         }
-    }
-    
-    // Function to transform number of seconds to string as m:ss
-    func formatTimer(_ seconds: Int) -> String {
-        return "\(seconds / 60):\(String(format: "%02d", (seconds % 60)))"
     }
     
     override func viewDidLoad() {
